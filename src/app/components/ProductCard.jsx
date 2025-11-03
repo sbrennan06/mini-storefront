@@ -11,7 +11,7 @@ export default function ProductCard({ product, onAdd }) {
       <div>
         ${price} | {category}
       </div>
-      <div>{out ? "Out Of Stock" : `In Stock: ${stock}`}</div>
+      <div>{out ? "Out Of Stock" : <>In Stock: ${stock}</>}</div>
       <button
         type="button"
         disabled={out}

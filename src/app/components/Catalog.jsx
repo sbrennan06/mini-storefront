@@ -4,6 +4,7 @@ import ProductList from "./ProductList";
 import CategoryFilter from "./CategoryFilter";
 import PriceFilter from "./PriceFilter";
 import CartSummary from "./CartSummary";
+import StatusMessage from "./StatusMessage";
 
 import { useEffect, useState } from "react";
 
@@ -60,9 +61,6 @@ export default function Catalog() {
     };
   }, []);
 
-  if (loading) return <div className="catalog">Loading...</div>;
-  if (error) return <div className="catalog">Error: {error}</div>;
-
   useEffect(() => {
     const timer = setInterval(() => {
       setProducts((prev) =>
@@ -75,6 +73,9 @@ export default function Catalog() {
 
     return () => clearInterval(timer); // cleanup
   }, []);
+
+  if (loading) return <StatusMessage state="loading" />;
+  if (error) return <StatusMessage state="error" message={error} />;
 
   const filtered = products.filter((p) => {
     const catOK = category === "All" || p.category === category;
