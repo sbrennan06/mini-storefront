@@ -12,7 +12,14 @@ export default function ProductCard({ product, onAdd }) {
         ${price} | {category}
       </div>
       <div>{out ? "Out Of Stock" : `In Stock: ${stock}`}</div>
-      <button type="button" disabled={out} onClick={() => onAdd?.(product)}>
+      <button
+        type="button"
+        disabled={out}
+        onClick={() => {
+          console.log("add clicked for", product.id);
+          onAdd?.(product);
+        }}
+      >
         Add to Cart
       </button>
     </div>
