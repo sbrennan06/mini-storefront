@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Title: Mini-Storefront using React. 
+
+Basic build where shoppers can browse products, filter by category and price, add items to cart, view items in cart, view cart totals, see product stock updates over time, and view loading, error, and empty states.
 
 ## Getting Started
 
