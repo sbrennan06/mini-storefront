@@ -1,6 +1,6 @@
 "use client";
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, onAdd }) {
   const { name, price, category, stock } = product;
   const out = stock === 0;
   return (
@@ -12,7 +12,7 @@ export default function ProductCard({ product }) {
         ${price} | {category}
       </div>
       <div>{out ? "Out Of Stock" : `In Stock: ${stock}`}</div>
-      <button type="button" disabled={out}>
+      <button type="button" disabled={out} onClick={() => onAdd?.(product)}>
         Add to Cart
       </button>
     </div>

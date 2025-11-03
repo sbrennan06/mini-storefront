@@ -3,6 +3,7 @@
 import ProductList from "./ProductList";
 import CategoryFilter from "./CategoryFilter";
 import PriceFilter from "./PriceFilter";
+import CartSummary from "./CartSummary";
 
 import { useEffect, useState } from "react";
 
@@ -90,6 +91,15 @@ export default function Catalog() {
       <PriceFilter value={maxPrice} onChange={setMaxPrice} />
 
       <p>{filtered.length} shown</p>
+      <CartSummary
+        cart={cart}
+        products={products}
+        itemCount={itemCount}
+        totalPrice={totalPrice}
+        onDecrement={decrementItem}
+        onReset={resetCart}
+      />
+
       <ProductList products={filtered} />
     </div>
   );
