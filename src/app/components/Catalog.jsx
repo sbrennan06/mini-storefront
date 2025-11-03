@@ -42,19 +42,24 @@ export default function Catalog() {
   if (error) return <div className="catalog">Error: {error}</div>;
 
   const filtered = products.filter((p) => {
-    const CatOK = category === "All" || p.category === category;
-    return CatOK;
+    const catOK = category === "All" || p.category === category;
+    const priceOK = maxPrice === "" || p.price <= Number(maxPrice); //creates filter
+    return catOK && priceOK;
   });
 
   return (
     <div className="catalog">
       <h1>Mini-Storefront</h1>
       <p>{products.length} products loaded.</p>
+
       <CategoryFilter
         categories={["All", "Electronics", "Furniture", "Books"]}
         value={category}
         onChange={setCategory}
       />
+
+      <PriceFilter value={maxPrice} onChange={setMaxPrice} />
+
       <p>{filtered.length} shown</p>
       <ProductList products={filtered} />
     </div>
