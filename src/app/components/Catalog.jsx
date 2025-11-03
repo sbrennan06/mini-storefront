@@ -1,6 +1,7 @@
 "use client";
 
 import ProductList from "./ProductList";
+import CategoryFilter from "./CategoryFilter";
 
 import { useEffect, useState } from "react";
 
@@ -43,6 +44,11 @@ export default function Catalog() {
     <div className="catalog">
       <h1>Mini-Storefront</h1>
       <p>{products.length} products loaded.</p>
+      <CategoryFilter
+        categories={["All", "Electronics", "Furniture", "Books"]}
+        value={category}
+        onChange={setCategory}
+      />
       <ProductList products={products} />
     </div>
   );

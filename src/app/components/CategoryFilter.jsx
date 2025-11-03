@@ -1,7 +1,7 @@
 "use client";
 
 //create catgory filter function
-export default function CategoryFilter({ categores, value, onChange }) {
+export default function CategoryFilter({ categories, value, onChange }) {
   return (
     <div className="category-filter">
       <label>
