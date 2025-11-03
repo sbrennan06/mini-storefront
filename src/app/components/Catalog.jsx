@@ -73,7 +73,7 @@ export default function Catalog() {
   const entries = Object.entries(cart);
   const itemCount = entries.reduce((sum, [, q]) => sum + q, 0);
   const totalPrice = entries.reduce((sum, [id, q]) => {
-    const prod = products.find((x) => x.od === id);
+    const prod = products.find((x) => x.id === id);
     return prod ? sum + prod.price * q : sum;
   }, 0);
 
@@ -100,7 +100,7 @@ export default function Catalog() {
         onReset={resetCart}
       />
 
-      <ProductList products={filtered} />
+      <ProductList products={filtered} onAdd={addToCart} />
     </div>
   );
 }
