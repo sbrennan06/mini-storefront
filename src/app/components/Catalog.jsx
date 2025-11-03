@@ -63,6 +63,19 @@ export default function Catalog() {
   if (loading) return <div className="catalog">Loading...</div>;
   if (error) return <div className="catalog">Error: {error}</div>;
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setProducts((prev) =>
+        prev.map((p) => {
+          if (p.stock === 0 || Math.random() > 0.4) return p; // ~40% chance
+          return { ...p, stock: Math.max(0, p.stock - 1) };
+        })
+      );
+    }, 5000);
+
+    return () => clearInterval(timer); // cleanup
+  }, []);
+
   const filtered = products.filter((p) => {
     const catOK = category === "All" || p.category === category;
     const priceOK = maxPrice === "" || p.price <= Number(maxPrice); //creates filter
