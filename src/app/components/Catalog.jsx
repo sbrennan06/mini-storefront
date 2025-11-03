@@ -2,6 +2,7 @@
 
 import ProductList from "./ProductList";
 import CategoryFilter from "./CategoryFilter";
+import PriceFilter from "./PriceFilter";
 
 import { useEffect, useState } from "react";
 
