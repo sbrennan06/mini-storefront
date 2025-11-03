@@ -16,7 +16,10 @@ export default function Catalog() {
         const data = await res.json();
         if (alive) setProducts(data);
       } catch (err) {
-        if (alive) setError(err.message);
+        if (alive)
+          setError(
+            err instanceof Error ? err.message : "Failed to fetch products"
+          );
       } finally {
         if (alive) setLoading(false);
       }
