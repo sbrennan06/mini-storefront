@@ -1,5 +1,7 @@
 "use client";
 
+import ProductList from "./ProductList";
+
 import { useEffect, useState } from "react";
 
 export default function Catalog() {
@@ -37,6 +39,7 @@ export default function Catalog() {
     <div className="catalog">
       <h1>Mini-Storefront</h1>
       <p>{products.length} products loaded.</p>
+      <ProductList products={products} />
     </div>
   );
 }

@@ -33,7 +33,7 @@ export async function GET() {
     },
 
     {
-      d: "p5",
+      id: "p5",
       name: "Bookshelf",
       price: 99,
       category: "Furniture",
