@@ -14,6 +14,27 @@ export default function Catalog() {
   //add filter state
   const [category, setCategory] = useState("All");
   const [maxPrice, setMaxPrice] = useState("");
+  const [cart, setCart] = useState({});
+
+  //add to cart function - with increment, decrement, and reset
+  function addToCart(product) {
+    setCart((prev) => ({ ...prev, [product.id]: (prev[product.id] || 0) + 1 }));
+  }
+
+  function decrementItem(id) {
+    setCart((prev) => {
+      const qty = (prev[id] || 0) - 1;
+      if (qty <= 0) {
+        const { [id]: _removed, ...rest } = prev;
+        return rest;
+      }
+      return { ...prev, [id]: qty };
+    });
+  }
+
+  function resetCart() {
+    setCart({});
+  }
 
   useEffect(() => {
     let alive = true;
@@ -46,6 +67,14 @@ export default function Catalog() {
     const priceOK = maxPrice === "" || p.price <= Number(maxPrice); //creates filter
     return catOK && priceOK;
   });
+
+  //cart totals
+  const entries = Object.entries(cart);
+  const itemCount = entries.reduce((sum, [, q]) => sum + q, 0);
+  const totalPrice = entries.reduce((sum, [id, q]) => {
+    const prod = products.find((x) => x.od === id);
+    return prod ? sum + prod.price * q : sum;
+  }, 0);
 
   return (
     <div className="catalog">
