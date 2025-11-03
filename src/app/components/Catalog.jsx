@@ -9,6 +9,10 @@ export default function Catalog() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  //add filter state
+  const [category, setCategory] = useState("All");
+  const [maxPrice, setMaxPrice] = useState("");
+
   useEffect(() => {
     let alive = true;
     async function load() {
