@@ -40,6 +40,11 @@ export default function Catalog() {
   if (loading) return <div className="catalog">Loading...</div>;
   if (error) return <div className="catalog">Error: {error}</div>;
 
+  const filtered = products.filter((p) => {
+    const CatOK = category === "All" || p.category === category;
+    return CatOK;
+  });
+
   return (
     <div className="catalog">
       <h1>Mini-Storefront</h1>
@@ -49,7 +54,8 @@ export default function Catalog() {
         value={category}
         onChange={setCategory}
       />
-      <ProductList products={products} />
+      <p>{filtered.length} shown</p>
+      <ProductList products={filtered} />
     </div>
   );
 }
